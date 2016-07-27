@@ -42,6 +42,11 @@ public class MainActivity extends AppCompatActivity
 
         setUpViews();
 
+        setUpLoginListener();
+    }
+
+    private void setUpLoginListener()
+    {
         mLoginManager.setLoginListener(new LoginManager.LoginListener()
         {
             @Override
@@ -65,7 +70,7 @@ public class MainActivity extends AppCompatActivity
         ButterKnife.bind(this);
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.
                 INPUT_METHOD_SERVICE);
-        if(getCurrentFocus() != null)
+        if (getCurrentFocus() != null)
             imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 1);
         mLoginButton.setOnClickListener(new View.OnClickListener()
         {
@@ -112,7 +117,7 @@ public class MainActivity extends AppCompatActivity
             {
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.
                         INPUT_METHOD_SERVICE);
-                if(getCurrentFocus() != null)
+                if (getCurrentFocus() != null)
                     imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
                 return true;
             }
