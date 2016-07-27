@@ -3,6 +3,7 @@ package pl.droidsononroids.coolloginbutton.view;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,7 +30,7 @@ public class LoginButton extends FrameLayout
     @BindView(R.id.success_layout)
     View mSuccessLayout;
 
-    enum State {
+    public enum State {
         DEFAULT, LOADING, ERROR, SUCCESS
     }
 
@@ -41,6 +42,11 @@ public class LoginButton extends FrameLayout
         LayoutInflater.from(context).inflate(R.layout.layout, this, true);
         ButterKnife.bind(this);
         state = State.DEFAULT;
+    }
+
+    public State getState()
+    {
+        return state;
     }
 
     public void reset()
@@ -61,6 +67,18 @@ public class LoginButton extends FrameLayout
         }
     }
 
+    public void autoReset()
+    {
+        new Handler().postDelayed(new Runnable()
+        {
+            @Override
+            public void run()
+            {
+                reset();
+            }
+        }, 2000);
+    }
+
     public void startLoading()
     {
         mSignUpTextView.setVisibility(GONE);
@@ -71,12 +89,14 @@ public class LoginButton extends FrameLayout
     public void showError()
     {
         showView(mErrorLayout);
+        //autoReset(); kłóci się z onKeyUp
         state = State.ERROR;
     }
 
     public void showSuccess()
     {
         showView(mSuccessLayout);
+        //autoReset();
         state = State.SUCCESS;
     }
 
