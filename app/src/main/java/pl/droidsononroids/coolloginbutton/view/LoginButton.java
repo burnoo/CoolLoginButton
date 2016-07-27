@@ -1,11 +1,9 @@
 package pl.droidsononroids.coolloginbutton.view;
 
-import pl.droidsononroids.coolloginbutton.R;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Handler;
 import android.util.AttributeSet;
@@ -19,6 +17,7 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import pl.droidsononroids.coolloginbutton.R;
 
 public class LoginButton extends FrameLayout
 {
@@ -36,7 +35,7 @@ public class LoginButton extends FrameLayout
     ImageView mErrorIcon;
     @BindView(R.id.success_icon)
     ImageView mSuccessIcon;
-    
+
     private State state;
 
     public LoginButton(Context context, AttributeSet attrs)
@@ -51,7 +50,7 @@ public class LoginButton extends FrameLayout
     {
         LayoutInflater.from(context).inflate(R.layout.layout, this, true);
         ButterKnife.bind(this);
-        
+
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.LoginButton);
 
         String text = ta.getString(R.styleable.LoginButton_text);
@@ -64,11 +63,11 @@ public class LoginButton extends FrameLayout
 
         ta.recycle();
 
-        if(text != null)
+        if (text != null)
             mSignUpTextView.setText(text);
 
         setBackground(getResources().getDrawable(R.drawable.ripple_button));
-        if(defaultColorDrawable != null)
+        if (defaultColorDrawable != null)
             setBackground(defaultColorDrawable);
 
         mErrorLayout.setBackgroundColor(errorColor);
@@ -189,7 +188,7 @@ public class LoginButton extends FrameLayout
     private void hide(View v)
     {
         v.setVisibility(View.GONE);
-        if(state == State.DEFAULT)
+        if (state == State.DEFAULT)
         {
             mSignUpTextView.setVisibility(VISIBLE);
             mProgressBar.setVisibility(GONE);

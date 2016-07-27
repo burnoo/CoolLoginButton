@@ -2,8 +2,6 @@ package pl.droidsononroids.coolloginbutton.api;
 
 import android.os.Handler;
 
-import pl.droidsononroids.coolloginbutton.view.LoginButton;
-
 public class LoginManager
 {
     private static final String CORRECT_LOGIN = "correct";
