@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity
     LoginButton mLoginButton;
     @BindView(R.id.content_main)
     ViewGroup mContentMain;
+
     private LoginManager mLoginManager;
 
     @Override
