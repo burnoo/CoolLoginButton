@@ -51,7 +51,7 @@ public class LoginButton extends FrameLayout
 
     public void reset()
     {
-        if(state != State.DEFAULT)
+        if(state != State.DEFAULT && state != State.LOADING)
         {
             switch (state)
             {

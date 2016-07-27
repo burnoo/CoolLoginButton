@@ -48,12 +48,14 @@ public class MainActivity extends AppCompatActivity
             public void loginSuccess()
             {
                 mLoginButton.showSuccess();
+                mEmailEditText.setFocusableInTouchMode(true);
             }
 
             @Override
             public void loginFailure()
             {
                 mLoginButton.showError();
+                mEmailEditText.setFocusableInTouchMode(true);
             }
         });
     }
@@ -123,6 +125,7 @@ public class MainActivity extends AppCompatActivity
         {
             mLoginButton.startLoading();
             mLoginManager.performLogin(mEmailEditText.getText().toString());
+            mEmailEditText.setFocusable(false);
         }
     }
 }
